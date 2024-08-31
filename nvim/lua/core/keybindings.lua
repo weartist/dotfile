@@ -8,6 +8,7 @@ keymap('n', '*', '*N')
 keymap('n', 'n', 'nzz')
 keymap('n', 'N', 'Nzz')
 
+keymap('n', '<S-Tab>', ':normal za<CR>')
 
 -- Quickly save the current buffer or all buffers
 keymap('n', '<leader>w', '<CMD>update<CR>')
@@ -17,9 +18,11 @@ keymap('n', '<leader>W', '<CMD>wall<CR>')
 keymap('n', '<leader>o', 'o<ESC>')
 keymap('n', '<leader>O', 'O<ESC>')
 
+keymap('n', 'D', '_dd')
+
 
 -- Select all
-keymap("n", "<C-a>", "gg<S-v>G")
+keymap("n", "<A-a>", "gg<S-v>G")
 
 keymap("n", "te", ":tabedit<Return>", opts)
 keymap("n", "<tab>", ":tabnext<Return>", opts)
@@ -33,24 +36,18 @@ keymap("n", "sk", "<C-w>k")
 keymap("n", "sj", "<C-w>j")
 keymap("n", "sl", "<C-w>l")
 
+-- TIP: Disable arrow keys in normal mode
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
 
 -- Resize window
 keymap("n", "<C-w><left>", "<C-w><")
 keymap("n", "<C-w><right>", "<C-w>>")
 keymap("n", "<C-w><up>", "<C-w>+")
 keymap("n", "<C-w><down>", "<C-w>-")
-
--- keymap('n', '"', '<Plug>Ysurroundiw"')
--- keymap('i', '"', '<Plug>Ysurroundiw')
-
--- keymap('n', '"', 'ysiw"')
-
--- -- Disable continuations
--- keymap("n", "<Leader>o", "o<Esc>^Da", opts)
--- keymap("n", "<Leader>O", "O<Esc>^Da", opts)
-
--- -- Jumplist
--- keymap("n", "<C-m>", "<C-i>", opts)
 
 -- -- <cr> == Enter
 keymap("i", "jk", "<Esc>")
@@ -59,9 +56,6 @@ keymap("n", "<leader>sv", "<C-w>v")
 keymap("n", "<leader>sx", ":close<cr>")
 
 
-
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>")
-keymap("n", "<leader>qe", ":NvimTreeFocus<cr>")
 
 -- keymap("n", "<A-Up>", ":m-2<CR>")
 -- keymap("n", "<A-Down>", ":m+2<CR>")
@@ -72,16 +66,12 @@ keymap("n", "<leader>qe", ":NvimTreeFocus<cr>")
 -- keymap("i", "s", "S")
 
 
-
 -- -- Move to window using the <ctrl> hjkl keys
 keymap("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
--- -- keymap("n", "<A-Right>", "<C-w>l", opt)
--- -- keymap("n", "<A-Down>", "<C-w>j", opt)
--- -- keymap("n", "<A-Up>", "<C-w>k", opt)
--- -- keymap("n", "<A-Left>", "<C-w>h", opt)
+
 
 -- -- Resize window using <ctrl> arrow keys
 keymap("n", "∆", ":<Esc>:m .+1<CR>", { desc = "Increase window height" })
@@ -108,8 +98,8 @@ keymap("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
--- -- Clear search with <esc>
--- keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+-- -- Clear search with <esc> 按Esc取消搜索高亮
+keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- -- Add undo break-points
 -- keymap("i", ",", ",<c-g>u")
@@ -144,21 +134,24 @@ keymap("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 -- end, { desc = "Format" })
 
 -- telescope:
-local builtin = require('telescope.builtin')
-keymap('n', '<leader>ff', builtin.find_files, {})
-keymap('n', '<C-p>', builtin.oldfiles, {})
-keymap('n', '<leader>fs', builtin.live_grep, {})
-keymap("n", "<C-f>", builtin.live_grep, {})
-keymap("n", "<C-l>", "<C-i>", {})
-keymap('n', '<leader>fb', builtin.buffers, {})
-keymap('n', '<leader>fh', builtin.help_tags, {})
-keymap('n', '<leader>fc', builtin.grep_string, {})
+-- 需要打开
+-- local builtin = require('telescope.builtin')
+-- keymap('n', '<leader>ff', builtin.find_files, {})
+-- keymap('n', '<C-p>', builtin.oldfiles, {})
+-- keymap('n', '<leader>fs', builtin.live_grep, {})
+-- keymap("n", "<C-f>", builtin.live_grep, {})
+-- keymap("n", "<C-l>", "<C-i>", {})
+-- keymap('n', '<leader>fb', builtin.buffers, {})
+-- keymap('n', '<leader>fh', builtin.help_tags, {})
+-- keymap('n', '<leader>fc', builtin.grep_string, {})
 
-keymap('n', '<leader>gc', builtin.git_commits	, {})
-keymap('n', '<leader>gb', builtin.git_branches	, {})
-keymap('n', '<leader>gs', builtin.git_status	, {})
+-- keymap('n', '<leader>gc', builtin.git_commits, {})
+-- keymap('n', '<leader>gb', builtin.git_branches, {})
+-- keymap('n', '<leader>gs', builtin.git_status, {})
 
-keymap('i', '<C-o>', '<C-o>o', {})
+
+
+-- keymap('i', '<C-o>', '<C-o>o', {})
 -- -- hop
 -- keymap('n', '<leader>hw', ":HopWord<cr>"	, {})
 -- keymap('n', '<leader>hm', ":HopWordMW<cr>"	, {})
@@ -219,7 +212,7 @@ keymap('i', '<C-o>', '<C-o>o', {})
 -- keymap("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- -- Terminal keymappings
--- keymap("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+keymap("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 -- keymap("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 -- keymap("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 -- keymap("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
@@ -244,12 +237,33 @@ keymap('i', '<C-o>', '<C-o>o', {})
 -- keymap("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 
--- -- -- Global mappings.
--- -- -- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
--- -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
--- -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
--- -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+-- keymap('n', '"', '<Plug>Ysurroundiw"')
+-- keymap('i', '"', '<Plug>Ysurroundiw')
+
+-- keymap('n', '"', 'ysiw"')
+
+-- -- Disable continuations
+-- keymap("n", "<Leader>o", "o<Esc>^Da", opts)
+-- keymap("n", "<Leader>O", "O<Esc>^Da", opts)
+
+-- -- Jumplist
+-- keymap("n", "<C-m>", "<C-i>", opts)
+
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+
+keymap("n", "<leader>qe", ":NvimTreeToggle<cr>")
+keymap("n", "<leader>e", ":NvimTreeFocus<cr>")
+
+-- 聚焦到 neo_tree 文件树上，并自动定位到当前文件
+-- keymap('n', '<leader>e', ':Neotree reveal<CR>')
+
 
 -- -- -- Use LspAttach autocommand to only map the following keys
 -- -- -- after the language server attaches to the current buffer

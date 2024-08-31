@@ -45,7 +45,7 @@ vim.o.hidden = true
 vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
-
+opt.wrapscan = false
 
 opt.title = true
 opt.backup = false
@@ -58,7 +58,7 @@ opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 opt.inccommand = "split"
 opt.smarttab = true
 opt.breakindent = true
-opt.wrap = false -- No Wrap lines
+opt.wrap = false          -- No Wrap lines
 opt.backspace = { "start", "eol", "indent" }
 opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 opt.wildignore:append({ "*/node_modules/*" })
@@ -89,3 +89,26 @@ vim.g.loaded_netrwPlugin = 1
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
+
+
+-- 设置日志级别为 DEBUG
+vim.lsp.set_log_level("debug")
+
+-- 设置日志文件路径
+vim.cmd('let $NVIM_LOG_FILE = expand("~/.cache/nvim/nvim.log")')
+
+
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+-- 在进行复制的时候高亮一下
+vim.api.nvim_create_autocmd('TextYankPost', {
+	desc = 'Highlight when yanking (copying) text',
+	group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
