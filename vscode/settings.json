@@ -1,0 +1,184 @@
+{
+  // ==================== UI and bebaviour ====================
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorTheme": "Vitesse Light Soft",
+  "workbench.sideBar.location": "left",
+  "security.workspace.trust.untrustedFiles":"open",
+  "vsicons.dontShowNewVersionMessage": true,
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "workbench.colorCustomizations": {
+    // editor scrollbar color
+    "scrollbarSlider.background": "#7d7676ea",
+    "scrollbarSlider.hoverBackground": "#96b9e180",
+    "scrollbarSlider.activeBackground": "#ad951de3",
+  },  
+  "workbench.startupEditor":"newUntitledFile",
+  "workbench.tree.expandMode":"singleClick",
+  "workbench.editor.closeOnFileDelete": true,
+  "window.title": "${rootName}",
+
+  // ==================== Editor ====================
+  // smooth cursor UI
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.tabSize": 2,
+  // copilot suggest
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers":"on",
+  "editor.suggestSelection":"recentlyUsed",
+  "editor.minimap.enabled": false,
+  // minimal number of visible leading and trailing lines surrounding the cursor, e.g. scrolling
+  "editor.cursorSurroundingLines": 11,
+  // line of bracket pair
+  "editor.guides.bracketPairs":"active",
+  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "editor.renderWhitespace":"boundary",
+  "editor.stickyScroll.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never",
+    "source.organizeImports": "never"
+  },
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+  // ==================== File Tree ====================
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+
+  // ==================== Debug ====================
+  "debug.allowBreakpointsEverywhere": true,
+  "debug.onTaskErrors": "debugAnyway",
+
+  // ==================== Git ====================
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+
+  // ==================== Copilot ====================
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  },
+
+    // ==================== Search ====================
+
+  "search.exclude": {
+    "**/out/**": true,
+    "**/.git": true,
+    "**/.output": true,
+    "**/.yarn": true,
+    "**/assets": true,
+    "**/public": true,
+    "**/dist/**": true,
+    "**/logs": true,
+    "**/node_modules": true,
+    "**/yarn.lock": true,
+    "**/package-lock.json": true,
+  },
+
+  // ==================== cSpell plugin ====================
+  "cSpell.userWords": [
+    "appkit",
+    "Autosize",
+    "bincode",
+    "Codicon",
+    "Colorspace",
+    "contextkey",
+    "cwds",
+    "deadcode",
+    "easyocr",
+    "entitie",
+    "Fastar",
+    "fastify",
+    "fitz",
+    "fontfile",
+    "fontname",
+    "fontsize",
+    "freecodecamp",
+    "fullscreen",
+    "icns",
+    "keydown",
+    "nestjs",
+    "objc",
+    "OPENAI",
+    "pixmap",
+    "proptest",
+    "quickcheck",
+    "reqwest",
+    "Tauri",
+    "typeorm",
+    "unlisten",
+    "unmaximize",
+    "unminimize",
+    "UPTODATE",
+    "VSIX"
+  ],
+
+    // ==================== Terminal ====================
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "path": "bash",
+      "args": [
+        "-l"
+      ],
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ]
+    },
+    "fish": {
+      "path": "fish",
+      "args": [
+        "-l"
+      ]
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell"
+    },
+    "nu": {
+      "path": "/opt/homebrew/bin/nu"
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle":"block",
+  // ==================== Language ====================
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--max-line-length=128"],
+  "python.languageServer": "Pylance",
+  "python.analysis.autoImportCompletions": true,
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/venv"
+  ],
+  "python.analysis.extraPaths": [],
+}
